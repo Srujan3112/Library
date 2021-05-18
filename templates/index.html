@@ -50,6 +50,9 @@ https://templatemo.com/tm-546-sixteen-clothing
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+                         <form method="GET">
+            <input type="text" name="search-area" value="{{search_input}}">
+            <input type="submit" value="search"></form>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
@@ -57,11 +60,21 @@ https://templatemo.com/tm-546-sixteen-clothing
                   <span class="sr-only">(current)</span>
                 </a>
               </li> 
-              <li class="nav-item">
-                <a class="nav-link" href="{% static 'products.html' %}">Register/Login</a>
+
+              {% comment %} <li class="nav-item">
+                <a class="nav-link" href="{% url 'register'%}">Register/Login</a>
+              </li> {% endcomment %}
+               <li class="nav-item">
+                <a class="nav-link" href="{%url 'required_book_create' %}"> Request</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% static 'about.html' %}">About Us</a>
+                <a class="nav-link" href="{% url 'required_books'%}">Requested Books</a>
+              </li>
+               <li class="nav-item">
+                <a class="nav-link" href="{%url 'upload_book' %}">Upload</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{%url 'logout'%}">Logout</a>
               </li>
             </ul>
           </div>
@@ -101,7 +114,7 @@ https://templatemo.com/tm-546-sixteen-clothing
           <div class="col-md-12">
             <div class="section-heading">
               <h2>Latest Products</h2>
-              <a href="{% static 'products.html' %}">view all products <i class="fa fa-angle-right"></i></a>
+              {% comment %} <a href="{% static 'products.html' %}">view all products <i class="fa fa-angle-right"></i></a> {% endcomment %}
             </div>
           </div>
           {% for book in books %}
@@ -110,18 +123,19 @@ https://templatemo.com/tm-546-sixteen-clothing
               <a href="#"><img src="{{book.image.url}}" alt="" ></a>
               <div class="down-content">
                 <a href="#"><h4>{{book.name}}</h4></a>
-                <h6>Rs. {{book.price}}</h6>
                 <p>{{book.description}}</p>
-                <ul class="stars">
+                {% comment %} <ul class="stars">
                   <li><i class="fa fa-star"></i></li>
                   <li><i class="fa fa-star"></i></li>
                   <li><i class="fa fa-star"></i></li>
                   <li><i class="fa fa-star"></i></li>
                   <li><i class="fa fa-star"></i></li>
-                </ul>
-                <span>Reviews ({{book.reviews}})</span>
+                </ul> {% endcomment %}
+                {% comment %} <span>Reviews ({{book.reviews}})</span> {% endcomment %}
+                 <a href="{{book.pdf.url}}" download="{{book.pdf.url}}">Download</a>
+                 <span><a href="{% url 'detail' book.id %}">Details</a></span>
               </div>
-              <a href="{{book.pdf.url}}" download="{{book.pdf.url}}">Download</a>
+             
             </div>
           </div>
           {% endfor %}
@@ -148,7 +162,6 @@ https://templatemo.com/tm-546-sixteen-clothing
                 <li><a href="#">Corporis, omnis doloremque</a></li>
                 <li><a href="#">Non cum id reprehenderit</a></li>
               </ul>
-              <a href="about.html" class="filled-button">Read More</a>
             </div>
           </div>
           <div class="col-md-6">
@@ -170,9 +183,6 @@ https://templatemo.com/tm-546-sixteen-clothing
                 <div class="col-md-8">
                   <h4>Creative &amp; Unique <em>Sixteen</em> Products</h4>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque corporis amet elite author nulla.</p>
-                </div>
-                <div class="col-md-4">
-                  <a href="#" class="filled-button">Purchase Now</a>
                 </div>
               </div>
             </div>

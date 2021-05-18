@@ -1,0 +1,23 @@
+{% extends 'basic.html' %}
+{% block title %}<h1 class="mt-2"> Requested Books</h1>{% endblock title %}
+
+{% block content %}
+{% for rbook in rbooks%}
+<div class="card mb-3" style="min-width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Title : {{rbook.name}}</h5>
+    {% comment %} <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> {% endcomment %}
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Author : {{rbook.author}}</li>
+  </ul>
+  {% comment %} <div class="card-body">
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div> {% endcomment %}
+</div>
+<div>
+</div>
+{% endfor %}
+{% endblock content %}
+

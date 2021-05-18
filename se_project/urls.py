@@ -21,8 +21,8 @@ from django.views.static import serve
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', include('authentication.urls')),
-    path('library/', include('library.urls')),
+    path('auth/', include('authentication.urls')),
+    path('', include('library.urls')),
     url(r'^download/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     path('admin/', admin.site.urls),
 ]
